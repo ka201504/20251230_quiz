@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { QuizQuestion, UserAnswer } from '../types';
-import { generateQuestionImage } from '../services/geminiService';
+import { QuizQuestion, UserAnswer } from '../types.ts';
+import { generateQuestionImage } from '../services/geminiService.ts';
 import { CheckCircle2, XCircle, ChevronRight, Loader2, Sparkles } from 'lucide-react';
 
 interface QuizEngineProps {
@@ -60,7 +60,6 @@ const QuizEngine: React.FC<QuizEngineProps> = ({ questions, onComplete }) => {
 
   return (
     <div className="max-w-2xl mx-auto p-4 space-y-6">
-      {/* Progress Header */}
       <div className="flex items-center gap-4 mb-2">
         <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
           <div 
@@ -74,7 +73,6 @@ const QuizEngine: React.FC<QuizEngineProps> = ({ questions, onComplete }) => {
       </div>
 
       <div className="glass-card rounded-3xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-500">
-        {/* Question Image */}
         <div className="relative aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
           {isImageLoading ? (
             <div className="flex flex-col items-center gap-2">
@@ -95,7 +93,6 @@ const QuizEngine: React.FC<QuizEngineProps> = ({ questions, onComplete }) => {
           )}
         </div>
 
-        {/* Question Text */}
         <div className="p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-6 leading-tight">
             {currentQuestion.question}
@@ -137,7 +134,6 @@ const QuizEngine: React.FC<QuizEngineProps> = ({ questions, onComplete }) => {
           </div>
         </div>
 
-        {/* Feedback Section */}
         {isShowingFeedback && (
           <div className="p-6 bg-gray-50 border-t border-gray-100 animate-in slide-in-from-bottom-2 duration-300">
             <div className="mb-4">
