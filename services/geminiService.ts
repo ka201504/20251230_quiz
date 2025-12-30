@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import { QuizQuestion, Difficulty } from "../types.ts";
+import { QuizQuestion, Difficulty } from "../types";
 
 export const generateQuizQuestions = async (
   topic: string,
