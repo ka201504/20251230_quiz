@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { QuizQuestion, Difficulty } from "../types";
 
@@ -53,21 +52,15 @@ export const generateQuizQuestions = async (
               description: "AI画像生成モデル（Imagen）に渡すための詳細な英語プロンプト" 
             }
           },
-          required: ["question", "options", "correctAnswerIndex", "explanation", "imagePrompt"],
-          propertyOrdering: ["question", "options", "correctAnswerIndex", "explanation", "imagePrompt"]
+          required: ["question", "options", "correctAnswerIndex", "explanation", "imagePrompt"]
         },
       },
     },
   });
 
-  try {
-    const text = response.text;
-    if (!text) throw new Error("Geminiからコンテンツを受信できませんでした");
-    return JSON.parse(text);
-  } catch (error) {
-    console.error("クイズデータの解析エラー:", error);
-    throw error;
-  }
+  const text = response.text;
+  if (!text) throw new Error("AIからクイズデータを取得できませんでした。");
+  return JSON.parse(text);
 };
 
 export const generateQuestionImage = async (prompt: string): Promise<string | null> => {
@@ -76,11 +69,7 @@ export const generateQuestionImage = async (prompt: string): Promise<string | nu
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-image',
       contents: {
-        parts: [
-          {
-            text: `Professional educational graphic, high quality, 3D digital art style, clean composition, vibrant colors: ${prompt}`,
-          },
-        ],
+        parts: [{ text: `Professional educational illustration, vibrant digital art, clean composition: ${prompt}` }],
       },
       config: {
         imageConfig: {
@@ -96,7 +85,7 @@ export const generateQuestionImage = async (prompt: string): Promise<string | nu
     }
     return null;
   } catch (error) {
-    console.error("画像生成エラー:", error);
+    console.error("画像生成中にエラーが発生しました:", error);
     return null;
   }
 };
