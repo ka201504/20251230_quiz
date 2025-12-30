@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { QuizQuestion, UserAnswer } from '../types.ts';
-import { generateQuestionImage } from '../services/geminiService.ts';
+import { QuizQuestion, UserAnswer } from '../types';
+import { generateQuestionImage } from '../services/geminiService';
 import { CheckCircle2, XCircle, ChevronRight, Loader2, Sparkles } from 'lucide-react';
 
 interface QuizEngineProps {
