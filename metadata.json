@@ -1,0 +1,5 @@
+{
+  "name": "AI Spark Quiz",
+  "description": "A modern AI-powered quiz application that generates custom questions and visual aids using Gemini and Imagen models.",
+  "requestFramePermissions": []
+}
